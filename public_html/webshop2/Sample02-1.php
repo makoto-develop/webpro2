@@ -4,14 +4,14 @@
 </lt>
 
 <?php
-$mysqli = mysqli_connect('mysql', 'user1', 'user1password');
-//$mysqli = mysqli_connect('mysql403.phy.lolipop.lan', 'LAA1710026', 'rootpassword');
+require_once("dbconf.inc");
+$mysqli = mysqli_connect(DB_URL, DB_USER, DB_PASS);
+
 if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
     exit();
 }
-$mysqli->select_db('webshop');
-//$mysqli->select_db('LAA1710026-webshop');
+$mysqli->select_db(DB_NAME);
 $result = $mysqli->query("SELECT * FROM Maker");
 while ($row = $result->fetch_assoc()) {
     echo "<a href='./Sample02-2.php?mid=" . $row["MakerID"] . "'>" . $row["MakerName"] . "</a><br>";

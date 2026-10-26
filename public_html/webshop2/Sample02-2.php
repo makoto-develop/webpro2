@@ -1,7 +1,7 @@
 <?php
+require_once("dbconf.inc");
 // HTMLに表示する文字を安全に変換します。
-function h($text)
-{
+function h($text) {
     return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
 
@@ -10,14 +10,12 @@ if (!isset($_GET['mid']) || !ctype_digit($_GET['mid']) || (int)$_GET['mid'] < 1)
 }
 $mid = (int)$_GET['mid'];
 
-//$mysqli = mysqli_connect('mysql', 'user1', 'user1password', 'webshop');
-$mysqli = mysqli_connect('mysql403.phy.lolipop.lan', 'LAA1710026', 'rootpassword');
+$mysqli = mysqli_connect(DB_URL, DB_USER, DB_PASS);
 if (!$mysqli) {
     exit('データベースに接続できませんでした。');
 }
 mysqli_set_charset($mysqli, 'utf8');
-//$mysqli->select_db('webshop');
-$mysqli->select_db('LAA1710026-webshop');
+$mysqli->select_db(DB_NAME);
 $result = mysqli_query($mysqli, 'SELECT GoodsName, Price, Stock FROM Goods WHERE MakerID = ' . $mid);
 if (!$result) {
     mysqli_close($mysqli);
