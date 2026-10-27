@@ -1,10 +1,11 @@
 <?php
+require_once("dbconf.inc");
 // HTMLに表示する文字を安全に変換します。
 function h($text) {
     return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
 
-$mysqli = mysqli_connect('mysql', 'user1', 'user1password', 'webshop');
+$mysqli = mysqli_connect(DB_URL, DB_USER, DB_PASS, DB_NAME);
 if (!$mysqli) {
     exit('データベースに接続できませんでした。');
 }

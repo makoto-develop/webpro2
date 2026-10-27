@@ -1,5 +1,5 @@
 <?php
-require_once("../dbconf.inc");
+require_once("dbconf.inc");
 $mysqli = mysqli_connect(DB_URL, DB_USER, DB_PASS);
 
 if ($mysqli->connect_errno) {
