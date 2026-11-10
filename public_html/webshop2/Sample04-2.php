@@ -16,12 +16,17 @@ if ($stext === "") {
 }
 
 $result = $mysqli->query($sql);
-while($row = $result->fetch_assoc()) {
-    echo $row["MakerID"] . " --- ";
-    echo $row["MakerName"] . " --- ";
-    echo $row["MakerURL"] . " --- ";
-    echo "<br>";
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo $row["MakerID"] . " --- ";
+        echo $row["MakerName"] . " --- ";
+        echo $row["MakerURL"] . " --- ";
+        echo "<br>";
+    }
+} else {
+    echo "検索結果はありません";
 }
+
 $result->free();
 $mysqli->close();
 ?>
