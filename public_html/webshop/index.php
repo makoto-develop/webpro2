@@ -166,7 +166,7 @@ if (!$categoryResult) {
                 空白のままで全商品を表示します。
             </p>
 
-            <form class="search-form" method="get">
+            <form class="search-form" method="post" action="GoodsSearch.php">
                 <label for="goods_name">商品名：</label>
                 <input type="text" id="goods_name" name="goods_name" placeholder="商品名を入力してください">
                 <input type="submit" value="検索">
@@ -183,7 +183,7 @@ if (!$categoryResult) {
                 $categoryId = (int)$row['CategoryID'];
                 $categoryName = h($row['CategoryName']);
 
-                echo '<li><a href="CategorySearch.php?cid=' . $categoryId . '">';
+                echo '<li><a href="GoodsSearch.php?cid=' . $categoryId . '">';
                 echo $categoryName;
                 echo '</a></li>';
             }
